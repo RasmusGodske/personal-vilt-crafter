@@ -19,7 +19,6 @@ This stack is perfect for developers who want to build a modern web application 
 I have been working with Laravel for a few years now and I have always been a fan of the Laravel ecosystem. However, as a individual with lots of ideas, I found myself starting lots of new Laravel projects. I always found myself doing the same setup over and over again and I wanted to automate this process. I wanted to build something that would allow me to get up and running quickly. Very similar to what [Laravel Jetstream](https://github.com/laravel/jetstream) does, but with a few tweaks.
 
 
-
 # Installation
 
 To get started, you need to install the ViltCraft package. You can do this by running the following command:
@@ -50,8 +49,3 @@ This option will create a `.vscode` folder in the root of your project with a `l
 **`--bootstrap-script`**
 
 This option will create a `scripts/` folder in the root of your project with a `bootstrap.sh` file. This file will allow you to quickly get your application up and running. I personally use this script all the time in my Laravel sail projects.
-
-
-
-
-

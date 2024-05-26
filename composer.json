@@ -1,5 +1,33 @@
 {
   "name": "rasmusgodske/vilt-crafter",
+  "description": "A tool for helping to bootstrap your Laravel VILT Stack",
+  "keywords": [
+    "laravel",
+    "tailwind",
+    "vue3",
+    "inertiajs",
+    "ziggy",
+    "vscode"
+  ],
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/RasmusGodske/vilt-crafter/issues",
+    "source": "https://github.com/RasmusGodske/vilt-crafter"
+  },
+  "authors": [
+    {
+      "name": "RasmusGodske",
+      "email": "RasmusGodske@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.2.0",
+    "inertiajs/inertia-laravel": "^1.2"
+  },
+  "require-dev": {
+    "inertiajs/inertia-laravel": "^1.2",
+    "tightenco/ziggy": "^2.1"
+  },
   "autoload": {
     "psr-4": {
       "RasmusGodske\\ViltCrafter\\": "src/"
@@ -11,24 +39,14 @@
     }
   },
   "extra": {
-    "laravel":{
+    "laravel": {
       "providers": [
         "RasmusGodske\\ViltCrafter\\ViltCrafterServiceProvider"
       ]
     }
   },
-  "authors": [
-    {
-      "name": "RasmusGodske",
-      "email": "RasmusGodske@gmail.com"
-    }
-  ],
-  "require": {
-    "inertiajs/inertia-laravel": "^1.2"
-  },
-  "require-dev": {
-    "inertiajs/inertia-laravel": "^1.2",
-    "tightenco/ziggy": "^2.1"
+  "config": {
+    "sort-packages": true
   },
   "minimum-stability": "dev",
   "prefer-stable": true
