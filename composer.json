@@ -1,0 +1,35 @@
+{
+  "name": "rasmusgodske/vilt-crafter",
+  "autoload": {
+    "psr-4": {
+      "RasmusGodske\\ViltCrafter\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\": "stubs/app/"
+    }
+  },
+  "extra": {
+    "laravel":{
+      "providers": [
+        "RasmusGodske\\ViltCrafter\\ViltCrafterServiceProvider"
+      ]
+    }
+  },
+  "authors": [
+    {
+      "name": "RasmusGodske",
+      "email": "RasmusGodske@gmail.com"
+    }
+  ],
+  "require": {
+    "inertiajs/inertia-laravel": "^1.2"
+  },
+  "require-dev": {
+    "inertiajs/inertia-laravel": "^1.2",
+    "tightenco/ziggy": "^2.1"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
