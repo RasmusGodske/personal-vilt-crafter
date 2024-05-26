@@ -298,6 +298,8 @@ class InstallCommand extends Command implements PromptsForMissingInput
         ] + $packages;
       });
 
+
+
       // Update tsconfig.json
       $tsconfig_path = base_path('tsconfig.json');
 
@@ -307,11 +309,13 @@ class InstallCommand extends Command implements PromptsForMissingInput
         $this->warn('tsconfig.json already exists. Skipping...');
       }
 
+      (new Filesystem)->ensureDirectoryExists(resource_path('js/types'));
+
       // Copy resources/js/types/inertia.d.ts
       $inertia_d_ts_path = resource_path('js/types/inertia.d.ts');
 
       if (! file_exists($inertia_d_ts_path)) {
-        copy(__DIR__.'/../../stubs/resources/js/types/inertia.d.ts', $inertia_d_ts_path);
+        copy(__DIR__.'/../../stubs/resources/js/types/vue-ziggy.d.ts', $inertia_d_ts_path);
       } else {
         $this->warn('inertia.d.ts already exists. Skipping...');
       }
