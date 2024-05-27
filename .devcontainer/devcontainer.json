@@ -11,8 +11,7 @@
   "workspaceFolder": "/home/vscode/project",
   "workspaceMount": "source=${localWorkspaceFolder},target=/home/vscode/project/vilt-crafter,type=bind,consistency=delegated",
   "mounts":[
-    "source=${localWorkspaceFolder}/.vscode,target=</home/vscode/project/.vscode,type=bind",
-    "source=${localWorkspaceFolder}/script,target=/home/vscode/project/script,type=bind",
+    "source=${localWorkspaceFolder}/.devcontainer/.vscode,target=/home/vscode/project/.vscode,type=bind",
   ],
   "runArgs": [
     "--init",

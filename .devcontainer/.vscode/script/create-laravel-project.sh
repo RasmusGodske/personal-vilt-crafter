@@ -1,4 +1,13 @@
-# curl -s https://laravel.build/example-app?with=pgsql | bash
+#!/bin/bash
+
+# Creates a fresh laravel project and adds vilt-crafter as a package
+
+if [ -d "example-app" ]; then
+    echo "example-app directory already exists. Deleting it..."
+    rm -rf example-app
+fi
+
+curl -s https://laravel.build/example-app?with=pgsql | bash
 echo "APP_PORT=8080" >> example-app/.env
 
 # cp docker-compose.yml docker-compose.yml.backup
