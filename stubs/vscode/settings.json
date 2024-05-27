@@ -1,0 +1,5 @@
+{
+  // Stop VSCode from trying to auto-detect tasks such as gulp and grunt.
+  // You can delete this if you want to use auto-detection.
+  "task.autoDetect": "off"
+}

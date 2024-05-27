@@ -236,12 +236,26 @@ class InstallCommand extends Command implements PromptsForMissingInput
 
         // Copy .vscode/launch.json
         $launch_json_path = base_path('.vscode/launch.json');
-
-        // Check if file exists
         if (! file_exists($launch_json_path)) {
           copy(__DIR__.'/../../stubs/vscode/launch.json', $launch_json_path);
         } else {
           $this->warn('launch.json already exists. Skipping...');
+        }
+
+        // Copy .vscode/settings.json
+        $settings_json_path = base_path('.vscode/settings.json');
+        if (! file_exists($settings_json_path)) {
+          copy(__DIR__.'/../../stubs/vscode/settings.json', $settings_json_path);
+        } else {
+          $this->warn('settings.json already exists. Skipping...');
+        }
+
+        // Copy .vscode/settings.json
+        $tasks_json_path = base_path('.vscode/tasks.json');
+        if (! file_exists($tasks_json_path)) {
+          copy(__DIR__.'/../../stubs/vscode/tasks.json', $tasks_json_path);
+        } else {
+          $this->warn('tasks.json already exists. Skipping...');
         }
 
         // Update .env and .env.example
@@ -346,6 +360,7 @@ class InstallCommand extends Command implements PromptsForMissingInput
       }
 
     }
+
 
 
     // --------------------------- Copied from Laravel Jetstream ---------------------------

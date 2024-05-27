@@ -1,0 +1,275 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Sail down (Delete Volumes)",
+      "type": "shell",
+      "icon": {
+        "color": "terminal.ansiBlue",
+        "id": "window"
+      },
+      "command": "vendor/bin/sail down -v",
+      "problemMatcher": [],
+    },
+    {
+      "label": "Sail down",
+      "type": "shell",
+      "icon": {
+        "color": "terminal.ansiBlue",
+        "id": "window"
+      },
+      "command": "vendor/bin/sail down",
+      "problemMatcher": [],
+    },
+    {
+      "label": "Sail up",
+      "type": "shell",
+      "icon": {
+        "color": "terminal.ansiBlue",
+        "id": "window"
+      },
+      "command": "vendor/bin/sail down && vendor/bin/sail up",
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": ""
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*Attaching to.*",
+          "endsPattern": ".*stop the server.*"
+        }
+      },
+      "presentation": {
+        "focus": true,
+        "panel": "shared",
+        "reveal": "always"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+    },
+    {
+      "label": "Sail up (From Scratch)",
+      "dependsOn": [
+        "Sail down (Delete Volumes)",
+        "Sail up",
+        "Composer: install",
+        "Npm: install",
+        "Database: migrate:fresh --seed",
+        "Artisan: optimize:clear",
+        "Npm: run dev",
+      ],
+      "dependsOrder": "sequence",
+      "icon": {
+        "color": "terminal.ansiBlue",
+        "id": "window"
+      },
+    },
+    {
+      "label": "Composer: install",
+      "type": "shell",
+      "dependsOn": "Sail up",
+      "command": "vendor/bin/sail composer install",
+      "icon": {
+        "color": "terminal.ansiYellow",
+        "id": "arrow-circle-down"
+      },
+      "presentation": {
+        "focus": true,
+        "panel": "shared",
+        "reveal": "always"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+    },
+    {
+      "label": "Composer: update",
+      "type": "shell",
+      "dependsOn": "Sail up",
+      "command": "vendor/bin/sail composer update",
+      "icon": {
+        "color": "terminal.ansiYellow",
+        "id": "arrow-circle-down"
+      },
+      "presentation": {
+        "focus": true,
+        "panel": "shared",
+        "reveal": "always",
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+    },
+    {
+      "label": "Composer: dump-autoload",
+      "type": "shell",
+      "dependsOn": "Sail up",
+      "command": "vendor/bin/sail composer dump-autoload",
+      "icon": {
+        "color": "terminal.ansiYellow",
+        "id": "arrow-circle-down"
+      },
+      "presentation": {
+        "focus": true,
+        "panel": "shared",
+        "reveal": "always"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+    },
+    {
+      "label": "Artisan: optimize:clear",
+      "type": "shell",
+      "icon": {
+        "color": "terminal.ansiGreen",
+        "id": "zap"
+      },
+      "presentation": {
+        "focus": true,
+        "panel": "shared",
+        "reveal": "always"
+      },
+      "dependsOn": "Sail up",
+      "command": "vendor/bin/sail php artisan optimize:clear",
+      "problemMatcher": [],
+    },
+    {
+      "label": "Artisan: route:list",
+      "type": "shell",
+      "icon": {
+        "color": "terminal.ansiGreen",
+        "id": "zap"
+      },
+      "presentation": {
+        "focus": true,
+        "panel": "shared",
+        "reveal": "always"
+      },
+      "dependsOn": "Sail up",
+      "command": "vendor/bin/sail php artisan route:list",
+      "problemMatcher": [],
+    },
+    {
+      "label": "Sail is ready",
+      "dependsOn": [
+        "Composer update",
+        "Composer: install"
+      ],
+      "dependsOrder": "sequence",
+      "hide": true,
+    },
+    {
+      "label": "Database: migrate",
+      "type": "shell",
+      "dependsOn": "Sail is ready",
+      "command": "vendor/bin/sail php artisan migrate",
+      "icon": {
+        "color": "terminal.ansiGreen",
+        "id": "database"
+      },
+      "presentation": {
+        "focus": true,
+        "panel": "shared",
+        "reveal": "always"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+    },
+    {
+      "label": "Database: migrate:fresh",
+      "type": "shell",
+      "dependsOn": "Sail is ready",
+      "command": "vendor/bin/sail php artisan migrate:fresh",
+      "icon": {
+        "color": "terminal.ansiGreen",
+        "id": "database"
+      },
+      "presentation": {
+        "focus": true,
+        "panel": "shared",
+        "reveal": "always"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+    },
+    {
+      "label": "Database: migrate:fresh --seed",
+      "type": "shell",
+      "dependsOn": "Sail is ready",
+      "command": "vendor/bin/sail php artisan migrate:fresh --seed",
+      "icon": {
+        "color": "terminal.ansiGreen",
+        "id": "database"
+      },
+      "presentation": {
+        "focus": true,
+        "panel": "shared",
+        "reveal": "always"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+    },
+    {
+      "label": "Npm: install",
+      "type": "shell",
+      "dependsOn": "Sail is ready",
+      "command": "vendor/bin/sail npm install",
+      "icon": {
+        "color": "terminal.ansiCyan",
+        "id": "rocket"
+      },
+      "presentation": {
+        "focus": true,
+        "panel": "shared",
+        "reveal": "always"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+    },
+    {
+      "label": "Npm: run dev",
+      "type": "shell",
+      "dependsOn": [
+        "Npm: install"
+      ],
+      "command": "vendor/bin/sail npm run dev",
+      "icon": {
+        "color": "terminal.ansiCyan",
+        "id": "rocket"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": ""
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "VITE *..*ready in.*",
+          "endsPattern": ".*APP_URL.*"
+        }
+      },
+      "presentation": {
+        "focus": true,
+        "panel": "shared",
+        "reveal": "always"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+    },
+  ]
+}
